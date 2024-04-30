@@ -1,4 +1,4 @@
-const db = require("../databases/setup/products");
+const db = require("../database/setup/products");
 
 class ProductController {
     index(req, res, next) {

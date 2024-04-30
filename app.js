@@ -3,7 +3,8 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const DatabaseSeeder = require('./databases/seeder');
+const DatabaseSeeder = require('./database/seeder');
+const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const productsRouter = require('./routes/products');
@@ -12,6 +13,7 @@ const app = express();
 
 DatabaseSeeder.run();
 
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
