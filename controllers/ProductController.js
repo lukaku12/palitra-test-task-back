@@ -2,7 +2,7 @@ const db = require("../database/setup/products");
 
 class ProductController {
     index(req, res, next) {
-        db.all('SELECT * FROM products', (err, rows) => {
+        db.all('SELECT * FROM products ORDER BY id', (err, rows) => {
             if (err) {
                 res.status(500).json({"error": err.message});
                 return;

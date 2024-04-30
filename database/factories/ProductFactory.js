@@ -2,13 +2,13 @@ const faker = require('@faker-js/faker');
 const db = require('../setup/products');
 
 class ProductFactory {
-    createProduct() {
+    createProduct(id) {
         const name = faker.fakerEN.commerce.productName();
         const price = faker.fakerEN.commerce.price();
         const image = faker.fakerEN.image.url();
 
-        const sql = 'INSERT INTO products (name, price, image) VALUES (?, ?, ?)';
-        const params = [name, price, image];
+        const sql = 'INSERT INTO products (id, name, price, image) VALUES (?, ?, ?, ?)';
+        const params = [id, name, price, image];
 
         db.run(sql, params, function (err) {
             if (err) {
@@ -21,7 +21,7 @@ class ProductFactory {
 
     create(count = 1) {
         for (let i = 0; i < count; i++) {
-            this.createProduct();
+            this.createProduct(i + 1);
         }
     }
 }
