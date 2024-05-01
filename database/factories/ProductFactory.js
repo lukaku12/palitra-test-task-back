@@ -6,9 +6,10 @@ class ProductFactory {
         const name = faker.fakerEN.commerce.productName();
         const price = faker.fakerEN.commerce.price();
         const image = faker.fakerEN.image.url();
+        const description = faker.fakerEN.commerce.productDescription();
 
-        const sql = 'INSERT INTO products (id, name, price, image) VALUES (?, ?, ?, ?)';
-        const params = [id, name, price, image];
+        const sql = 'INSERT INTO products (id, name, price, image, description) VALUES (?, ?, ?, ?, ?)';
+        const params = [id, name, price, image, description];
 
         db.run(sql, params, function (err) {
             if (err) {
